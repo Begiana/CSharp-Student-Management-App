@@ -1,0 +1,47 @@
+﻿@page
+@model StudentsManagementApp.Pages.Teachers.IndexModel
+@{
+}
+
+<h2>List of Teachers</h2>
+
+<div class="database">
+    <div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.teachers is not null)
+        {
+            @foreach (var teacher in Model.teachers)
+            {
+                <tr>
+                    <td>@teacher.Id</td>
+                    <td>@teacher.Firstname</td>
+                    <td>@teacher.Lastname</td>
+                    <td class="btns">
+                        <a class="button" href="/Teachers/Update?id=@teacher.Id">Update</a>
+                        <a class="button" href="/Teachers/Delete?id=@teacher.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+
+</table>
+    </div>
+
+</div>
+<div class="button-container">
+    
+    <div class="button" id="new">
+        <a  href="/Teachers/Create">New Teacher</a>
+    </div>
+
+</div>

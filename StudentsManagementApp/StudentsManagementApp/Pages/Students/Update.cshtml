@@ -1,0 +1,43 @@
+﻿@page
+@model StudentsManagementApp.Pages.Students.UpdateModel
+@{
+}
+<h2>Update Student</h2>
+
+
+<div class="database form">
+<form method="post">
+    <div >
+            <input type="hidden"  name="id" 
+                    id="firstname" value="@Model.studentDTO.Id" />
+    </div>
+    <div >
+        <label for="firstname" >Firstname</label>
+        <div>
+            <input type="text"  name="firstname" id="firstname" 
+                    placeholder="Enter firstname" value="@Model.studentDTO.Firstname" />
+        </div>
+    </div>
+    <div >
+        <label for="lastname" >Lastname</label>
+        <div>
+            <input type="text"  name="lastname" id="lastname" 
+                    placeholder="Enter lastname" value="@Model.studentDTO.Lastname" />
+        </div>
+    </div>
+   
+    <div>
+         <div class="submitCancelButtons">
+                <button class="button" type="submit">Submit</button>
+                <a class="button"  href="/Students/Index" role="button">Cancel</a>
+        </div>
+    </div>
+</form>
+
+   </div>
+
+@if (!Model.errorMessage.Equals(""))
+{
+    <div class="error"><strong>@Model.errorMessage</strong></div>
+}
+

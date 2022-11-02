@@ -1,0 +1,53 @@
+﻿@page
+@model StudentsManagementApp.Pages.Courses.IndexModel
+@{
+}
+
+<h2>List of Courses</h2>
+
+<div class="database">
+    <div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Description</th>
+                    <th colspan="2"> Teacher </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.courses is not null)
+        {
+            @foreach (var course in Model.courses)
+            {
+                <tr >
+                            <td>@course.Id</td>
+                            <td>@course.Description</td>
+                           
+                            @{
+                                var teacher = Model.teachers.Where(x => x.Id == course.TeacherId).First();
+                            }
+                            
+                            <td>@teacher.Firstname</td>
+                            <td>@teacher.Lastname</td>
+                            <td class="btns">
+                                <a class="button" href="/Courses/Update?id=@course.Id">Update</a>
+                                <a class="button" href="/Courses/Delete?id=@course.Id">Delete</a>
+                            </td>
+    
+                </tr>
+                   
+            }
+               
+        }
+    </tbody>
+
+</table>
+    </div>
+
+</div>
+<div class="button-container">
+    <div class="button" id="new">
+        <a  href="/Courses/Create">New Course</a>
+    </div>
+</div>

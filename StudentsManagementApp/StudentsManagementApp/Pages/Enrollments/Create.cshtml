@@ -1,0 +1,73 @@
+﻿@page
+@model StudentsManagementApp.Pages.Enrollments.CreateModel
+@{
+}
+
+<h2>New Enroll</h2>
+
+<div class="database form">
+    <form method="POST">
+       
+        <div>
+            <label for="studentId">Student</label>
+            <div>
+               
+
+                @{
+                    List<SelectListItem> listAllItems = new List<SelectListItem>();
+                    @foreach (var student in Model.students)
+                    {
+                        listAllItems.Add(new SelectListItem
+                {
+                    Text = @student.Firstname + " " + student.Lastname,
+                    Value = @student.Id.ToString()
+                });
+
+                    }
+                }
+
+                @Html.DropDownList("studentId", listAllItems, new { @class = "dropdown-list" })
+
+            </div>
+        </div>
+        
+        <div>
+            <label for="courseId">Course</label>
+            <div>
+             
+                @{
+                    List<SelectListItem> listItems = new List<SelectListItem>();
+                    @foreach (var course in Model.courses)
+                    {
+                        listItems.Add(new SelectListItem
+                {
+                    Text = @course.Description,
+                    Value = @course.Id.ToString()
+                });
+
+                    }
+                }
+
+                @Html.DropDownList("courseId", listItems, new { @class = "dropdown-list"})
+
+            </div>
+        </div>
+
+        
+
+
+
+        <div>
+            <div class="submitCancelButtons">
+                <button class="button" type="submit">Submit</button>
+                <a class="button" href="/Courses/Index" role="button">Cancel</a>
+            </div>
+
+
+        </div>
+    </form>
+</div>
+@if (!Model.errorMessage.Equals(""))
+{
+    <div class="error"><strong>@Model.errorMessage</strong></div>
+}

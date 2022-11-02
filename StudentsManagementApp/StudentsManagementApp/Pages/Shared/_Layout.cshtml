@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - StudentsManagementApp</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/StudentsManagementApp.styles.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="pagesContainer">
+            <div class="pages">
+                <a asp-area="" asp-page="/Index">ΣΕΒ</a>
+            </div>
+        </div>
+        <div class="pagesContainer">
+            <div class="pages">
+                <a asp-area="" asp-page="/Students/Index">Students</a>
+            </div>
+            <div class="pages">
+                <a asp-area="" asp-page="/Teachers/Index">Teachers</a>
+            </div>
+            <div class="pages">
+                <a asp-area="" asp-page="/Courses/Index">Courses</a>
+            </div>
+            <div class="pages">
+                <a asp-area="" asp-page="/Enrollments/Index">Enrollments</a>
+            </div>
+        </div>
+    </div>
+    
+
+
+   
+    <div class="database-container">
+        @RenderBody()
+       
+    </div>
+   
+
+
+    <footer>
+        <div class="footer">
+            © 2022 - Students Management App
+        </div>
+    </footer>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

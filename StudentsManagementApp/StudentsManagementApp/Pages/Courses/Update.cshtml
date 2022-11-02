@@ -1,0 +1,55 @@
+﻿@page
+@model StudentsManagementApp.Pages.Courses.UpdateModel
+
+@{
+}
+
+<h2>Update Course</h2>
+
+<div class="database form">
+
+<form method="post">
+    <div >
+        <input type="hidden" name="id" id="id" value="@Model.courseDTO.Id" />
+    </div>
+    <div >
+        <label for="description" >Description</label>
+        <div>
+            <input type="text"  name="description" id="description" 
+                placeholder="Enter description" value="@Model.courseDTO.Description" />
+        </div>
+    </div>
+    <div >
+        <label for="teacherId" >Teacher</label>
+        <div>
+                @{
+                    List<SelectListItem> listItems = new List<SelectListItem>();
+                    @foreach (var teacher in Model.teachers)
+                    {
+                        listItems.Add(new SelectListItem
+                {
+                    Text = @teacher.Firstname + " " + teacher.Lastname,
+                    Value = @teacher.Id.ToString()
+                });
+
+                    }
+                }
+
+                @Html.DropDownList("teacherId", listItems, new { @class = "dropdown-list"  })
+
+        </div>
+    </div>
+    <div >
+         <div class="submitCancelButtons">
+            <button class="button" type="submit" >Submit</button>       
+            <a class="button" href="/Courses/Index" role="button">Cancel</a>
+        </div>
+    </div>
+</form>
+
+</div>
+
+@if (!Model.errorMessage.Equals(""))
+{
+    <div class="error">@Model.errorMessage</div>
+}

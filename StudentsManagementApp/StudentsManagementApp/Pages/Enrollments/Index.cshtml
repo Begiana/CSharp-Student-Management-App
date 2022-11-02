@@ -1,0 +1,54 @@
+﻿@page
+@model StudentsManagementApp.Pages.Enrollments.IndexModel
+@{
+}
+
+<h2>Enrollments</h2>
+
+<div class="database">
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Course Id</th>
+                    <th>Course</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.enrollments is not null)
+                {
+                    @foreach (var enroll in Model.enrollments)
+                    {
+                        <tr>
+                            <td>@enroll.StudentId</td>
+                            @{
+                                var student = Model.students.Where(x => x.Id == enroll.StudentId).First();
+                            }
+                            <td>@student.Firstname</td>
+                            <td>@student.Lastname</td>
+                            <td>@enroll.CourseId</td>
+                            @{
+                                var course = Model.courses.Where(x => x.Id == enroll.CourseId).First();
+                            }
+                            <td>@course.Description</td>
+
+                            <td class="btns">
+                                <a class="button" href="/Enrollments/Delete?id=@enroll.StudentId&id1=@enroll.CourseId">Delete</a>
+                            </td>  
+                        </tr>
+                    }
+                }
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
+<div class="button-container">
+    <div class="button" id="new">
+        <a class="btn btn-primary btn-sm" href="/Enrollments/Create">New Enrollment</a>
+    </div>
+</div>

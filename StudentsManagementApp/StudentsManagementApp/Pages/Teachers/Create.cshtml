@@ -1,0 +1,37 @@
+﻿@page
+@model StudentsManagementApp.Pages.Teachers.CreateModel
+@{
+}
+<h2>New Teacher</h2>
+
+<div class="database form">
+
+<form method="POST">
+    <div >
+        <label for="firstname" >Name</label>
+        <div>
+            <input type="text"  name="firstname" id="firstname"
+                   placeholder="Enter firstname.." value="@Model.teacherDto.Firstname" />
+        </div>
+    </div>
+
+    <div >
+        <label for="lastname" >Lastname</label>
+        <div>
+            <input type="text" name="lastname" id="lastname "
+                   placeholder="Enter lastname.." value="@Model.teacherDto.Lastname" />
+        </div>
+    </div>
+
+    <div >
+            <div class="submitCancelButtons">
+                <button class="button" type="submit">Submit</button>
+                <a class="button" href="/Teachers/Index" role="button">Cancel</a>
+        </div>
+    </div>
+</form>
+</div>
+@if (!Model.errorMessage.Equals(""))
+{
+    <div class="error"><strong>@Model.errorMessage</strong></div>
+}

@@ -1,0 +1,8 @@
+﻿@page
+@model StudentsManagementApp.Pages.Enrollments.DeleteModel
+@{
+}
+@if (!Model.errorMessage.Equals(""))
+{
+    <div class="error"><strong>@Model.errorMessage</strong></div>
+}
